@@ -1,0 +1,43 @@
+/* Reset and base styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Splash Screen Container */
+  .splash-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Logo Image */
+  .logo {
+    width: 25vw;
+    max-width: 140px;
+    min-width: 80px;
+    height: auto;
+    transform: scale(0);
+    transition: transform 2s ease-in-out;
+  }
+
+  .content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Pixel Art Converter</title>
+    <link rel="stylesheet" href="Bubble.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bubble Pixel Art Converter</h1>
+            <p class="tagline">Transform your images into stunning, realistic bubble art! Yooooo..</p>
+            <p class="description">Upload your image and adjust the settings to create unique pixelated bubble masterpieces. Perfect for profile pictures, digital art, and more.</p>
+        </header>
+
+        <section class="upload-section">
+            <h2>Get Started</h2>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <p class="upload-text"><strong>Click to upload</strong> or drag and drop your image here</p>
+                    <span class="file-info">Supports PNG, JPG, JPEG • Maximum 10MB</span>
+                </div>
+                <label for="imageInput" class="upload-label"></label>
+<input type="file" id="imageInput" accept="image/*">
+            </div>
+            <div class="progress-bar-container" id="progressBarContainer" style="display: none;">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text" id="progressText">Uploading... 0%</span>
+            </div>
+        </section>
+
+        <section class="stats-section" id="statsSection" style="display: none;">
+            <h2>Image Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalBubbles">0</span>
+                    <span class="stat-label">Total Bubbles</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="originalSize">0 KB</span>
+                    <span class="stat-label">Original Size</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="processedSize">0 KB</span>
+                    <span class="stat-label">Processed Size</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="colorCount">0</span>
+                    <span class="stat-label">Unique Colors</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="conversion-section">
+            <h2>Your Bubble Art</h2>
+            <div class="result-display">
+                <div class="preview-box">
+                    <h3>Original Image</h3>
+                    <canvas id="originalCanvas" class="image-preview"></canvas>
+                    <p class="placeholder-text" id="originalImagePlaceholder">Image preview will appear here.</p>
+                </div>
+                <div class="preview-box">
+                    <h3>Bubble Pixel Art</h3>
+                    <div id="pixelContainer" class="pixel-container image-preview"></div>
+                    <p class="placeholder-text" id="bubbleImagePlaceholder">Converted bubble art will appear here.</p>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <h2>Adjust Settings</h2>
+                <div class="control-grid">
+                    <div class="control-group">
+                        <label for="pixelSize">Bubble Size</label>
+                        <input type="range" id="pixelSize" min="6" max="30" value="12">
+                        <span class="control-value" id="pixelSizeValue">12px</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="maxWidth">Canvas Width</label>
+                        <input type="range" id="maxWidth" min="300" max="1200" value="600">
+                        <span class="control-value" id="maxWidthValue">600px</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="contrast">Contrast</label>
+                        <input type="range" id="contrast" min="0.5" max="2.5" step="0.1" value="1.2">
+                        <span class="control-value" id="contrastValue">1.2</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="brightness">Brightness</label>
+                        <input type="range" id="brightness" min="0.5" max="2.0" step="0.1" value="1.0">
+                        <span class="control-value" id="brightnessValue">1.0</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="saturation">Saturation</label>
+                        <input type="range" id="saturation" min="0.5" max="2.0" step="0.1" value="1.1">
+                        <span class="control-value" id="saturationValue">1.1</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="smoothing">Smoothing</label>
+                        <input type="range" id="smoothing" min="0" max="1" step="0.1" value="0.3">
+                        <span class="control-value" id="smoothingValue">0.3</span>
+                    </div>
+                </div>
+                <div class="control-actions">
+                    <button id="resetBtn" class="btn secondary-btn">Reset to Defaults</button>
+                    <button id="convertBtn" class="btn primary-btn" disabled>Convert to Bubble Pixel Art</button>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h2>Download Your Art</h2>
+                <div class="quality-options">
+                    <button class="quality-btn active" data-quality="high">High Quality</button>
+                    <button class="quality-btn" data-quality="medium">Medium Quality</button>
+                    <button class="quality-btn" data-quality="ultra">Ultra Quality</button>
+                </div>
+                <button id="downloadBtn" class="btn primary-btn" disabled>Download Bubble Pixel Art</button>
+            </div>
+        </section>
+    </div>
+    <script src="Bubble.js"></script>
+</body>
+</html>
